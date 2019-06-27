@@ -1,0 +1,22 @@
+{
+  "name": "mongo-express-restapi",
+  "version": "1.0.0",
+  "description": "mongo and express restful api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nevermindthelabel/mongo-express-restapi.git"
+  },
+  "author": "Matt Kilcup",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nevermindthelabel/mongo-express-restapi/issues"
+  },
+  "homepage": "https://github.com/nevermindthelabel/mongo-express-restapi#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
