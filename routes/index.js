@@ -3,7 +3,7 @@ const apiRoutes = require('./api');
 
 // router.use('/api', apiRoutes);
 
-const player = [
+const players = [
   {
     firstName: 'Kyler',
     lastName: 'Murray',
@@ -29,18 +29,19 @@ const teams = [
   { teamName: 'Packers', teamState: 'Wisconsin', teamConference: 'nfc' }
 ];
 
-router.get('/api/players', (req, res) => {
-  res.json({
-    confirmation: 'Success',
-    data: player
-  });
-});
+router.get('/api/:resourse', (req, res) => {
+  const resourse = req.params.resourse;
 
-router.get('/api/teams', (req, res) => {
-  res.json({
-    confirmation: 'Success',
-    data: teams
-  });
+  if (resourse === 'players') {
+    res.json({
+      confirmation: 'Success',
+      data: players
+    });
+  } else if (resourse === 'teams') {
+    res.json({
+      confirmation: 'Success',
+      data: teams
+    });
+  }
 });
-
 module.exports = router;
