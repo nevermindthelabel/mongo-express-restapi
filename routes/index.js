@@ -29,19 +29,26 @@ const teams = [
   { teamName: 'Packers', teamState: 'Wisconsin', teamConference: 'nfc' }
 ];
 
-router.get('/api/:resourse', (req, res) => {
-  const resourse = req.params.resourse;
+const db = {
+  teams,
+  players
+};
 
-  if (resourse === 'players') {
+router.get('/api/:resource', (req, res) => {
+  const resource = req.params.resource;
+  const data = db[resource];
+
+  if (data == null) {
     res.json({
-      confirmation: 'Success',
-      data: players
+      confirmation: 'Fail',
+      message: 'bad request'
     });
-  } else if (resourse === 'teams') {
-    res.json({
-      confirmation: 'Success',
-      data: teams
-    });
+    return;
   }
+  res.json({
+    confirmation: 'success',
+    data
+  });
 });
+
 module.exports = router;
