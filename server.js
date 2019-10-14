@@ -1,15 +1,16 @@
-const express = require('express');
-// const routes = require('./routes');
-const PORT = process.env.PORT || 3001
+const express = require("express");
+const routes = require("./routes");
+const connectDB = require("./config/db");
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-app.use(express.json({ extended: false }));
+connectDB();
 
-// app.use(routes);
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send({ message: 'successful' })
-})
+app.use(routes);
 
-app.listen(PORT, () => console.log(`Server listening on port http://localhost:${3001}`));
+app.listen(PORT, () =>
+  console.log(`Server listening on port http://localhost:${PORT}`)
+);
