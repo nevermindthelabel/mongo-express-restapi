@@ -38,9 +38,22 @@ module.exports = {
   },
   put: (id, params) => {
     return new Promise((resolve, reject) => {
-      Player.findByIdAndUpdate(id, params, {new: true})
+      Player.findByIdAndUpdate(id, params, { new: true })
         .then(data => {
           resolve(data);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  },
+  delete: (id) => {
+    return new Promise((resolve, reject) => {
+      Player.findByIdAndRemove(id)
+        .then(() => {
+          resolve({
+            id
+          });
         })
         .catch(error => {
           reject(error);
