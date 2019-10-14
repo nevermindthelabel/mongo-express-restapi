@@ -79,10 +79,11 @@ router.post('/:resource', async (req, res) => {
   }
 });
 
-router.put(':/resource/:id', async (req, res) => {
+router.put('/:resource/:id', async (req, res) => {
   try {
     const resource = req.params.resource;
     const id = req.params.id;
+    const body = req.body;
     const controller = controllers[resource];
 
     if (controller == null) {
@@ -92,9 +93,37 @@ router.put(':/resource/:id', async (req, res) => {
       });
       return;
     }
-    const data = await controller.put(id, req.body);
+    const data = await controller.put(id, body);
     res.json({
       message: 'success',
+      data
+    });
+  } catch (error) {
+    console.error(error);
+    res.json({
+      confirmation: 'fail',
+      message: error.message
+    });
+  }
+});
+
+router.delete('/:resource/:id', async (req, res) => {
+  try {
+    const resource = req.params.resource;
+    const id = req.params.id;
+    const controller = controllers[resource];
+
+    if (controller == null) {
+      console.log(controller, id)
+      res.json({
+        confirmation: 'fail',
+        message: 'invalid resource'
+      });
+      return;
+    }
+    const data = await controller.delete(id);
+    res.json({
+      confirmation: `successfully removed ${id} `,
       data
     });
   } catch (error) {
