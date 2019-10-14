@@ -135,10 +135,4 @@ router.delete('/:resource/:id', async (req, res) => {
   }
 });
 
-// const playerRoutes = require('./players');
-// const teamRoutes = require('./teams');
-
-// router.use('/players', playerRoutes);
-// router.use('/teams', teamRoutes);
-
 module.exports = router;
