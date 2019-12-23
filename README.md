@@ -1,3 +1,3 @@
 # mongo-express-restapi
 
-REST API using mongo/mongoose and node. 
+Basic REST API using mongo/mongoose and node, with full CRUD functionality.
